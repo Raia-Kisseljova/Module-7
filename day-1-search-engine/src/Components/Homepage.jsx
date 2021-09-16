@@ -9,19 +9,13 @@ import {
 import { Link } from "react-router-dom";
 import CompanyDetail from "./CompanyDetail";
 
-export default function Homepage(props) {
+export default function Homepage() {
   const searchRef = React.useRef();
   const [jobs, setJobs] = React.useState([]);
 
   const fetchJob = async () => {
     const response = await fetch(
-      `https://strive-jobs-api.herokuapp.com/jobs?search=${searchRef.current.value}&limit=12`,
-      {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGRjOWFjYmIzNTgxNzAwMTVjMjI3ZDQiLCJpYXQiOjE2MzE3MTYyODIsImV4cCI6MTYzMjkyNTg4Mn0.rXOP9bM9x8yTlOwr9mAadN5guitB8-cmEhXErTsy310",
-        },
-      }
+      `https://strive-jobs-api.herokuapp.com/jobs?search=${searchRef.current.value}&limit=12`
     );
     const data = await response.json();
     setJobs(data.data);
@@ -29,6 +23,11 @@ export default function Homepage(props) {
     console.log(searchRef.current.value);
   };
 
+  const redirect = (e) => {
+    window.location.replace(
+      `http://localhost:3000/company_detail/${e.target.outerText}`
+    );
+  };
   return (
     <>
       <div className="center-input">
@@ -66,9 +65,9 @@ export default function Homepage(props) {
                 return (
                   <tr>
                     <td>{job.title}</td>
-                    <Link to="/company_detail">
-                      <td>{job.company_name}</td>
-                    </Link>
+
+                    <td onClick={(e) => redirect(e)}>{job.company_name}</td>
+
                     <td>{job.salary}</td>
                     <td>
                       <button className="fav-btn">🤍</button>

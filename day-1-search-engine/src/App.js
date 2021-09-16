@@ -9,7 +9,7 @@ function App() {
     <Router>
 
       <Route path="/" exact component={Homepage} />
-      <Route path="/company_detail" exact component={CompanyDetail} />
+      <Route path="/company_detail/:company_name" exact component={CompanyDetail} />
 
     </Router >
   )
