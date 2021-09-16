@@ -19,44 +19,45 @@ export default function CompanyDetail(props) {
       <Container>
         <Row>
           <Col md={10}>
-            {company.map((c) => {
-              return (
-                <>
-                  <div className="my-3 text-center">{c.company_name}</div>
-                  <div className="company-description">
-                    <p className="text-center">About company</p>
-                    {c.description.replace(/<[^>]+>/g, "")}
-                  </div>
-                  <div className="my-3 text-center">
-                    Found jobs : {company.length}
-                  </div>
-                  <Table striped bordered hover variant="dark">
-                    <thead>
-                      <tr>
-                        <th>Title</th>
-                        <th>Salary</th>
-                        <th>Category</th>
-                        <th>Apply here</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {company.map((c) => {
-                        return (
-                          <tr>
-                            <td>{c.title}</td>
-                            <td>{c.salary}</td>
-                            <td>{c.category}</td>
-                            <td>
-                              <a href={c.url}>{c.url}</a>
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </Table>
-                </>
-              );
-            })}
+            {company.length > 0 && (
+              <>
+                {" "}
+                <div className="my-3 text-center">
+                  {company[0].company_name}
+                </div>
+                <div className="company-description">
+                  <p className="text-center">About company</p>
+                  {company[0].description.replace(/<[^>]+>/g, "")}
+                </div>
+                <div className="my-3 text-center">
+                  Found jobs : {company.length}
+                </div>
+              </>
+            )}
+            <Table striped bordered hover variant="dark">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Salary</th>
+                  <th>Category</th>
+                  <th>Apply here</th>
+                </tr>
+              </thead>
+              <tbody>
+                {company.map((c) => {
+                  return (
+                    <tr>
+                      <td>{c.title}</td>
+                      <td>{c.salary}</td>
+                      <td>{c.category}</td>
+                      <td>
+                        <a href={c.url}>{c.url}</a>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
           </Col>
         </Row>
       </Container>
