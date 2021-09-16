@@ -49,4 +49,18 @@
 
 .company-description {
   font-size: 12px;
+  height: 300px;
+  overflow: auto;
+  color: rgb(85, 85, 85);
+}
+
+.company-description::-webkit-scrollbar {
+  background-color: #e28dc6;
+}
+
+td a {
+  color: #e28dc6;
+}
+td a:hover {
+  color: #e28dc6;
 }
