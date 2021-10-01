@@ -23,11 +23,11 @@ export default function Homepage() {
     console.log(searchRef.current.value);
   };
 
-  const redirect = (e) => {
-    window.location.replace(
-      `http://localhost:3000/company_detail/${e.target.outerText}`
-    );
-  };
+  // const redirect = (e) => {
+  //   window.location.replace(
+  //     `http://localhost:3000/company_detail/${e.target.outerText}`
+  //   );
+  // };
   return (
     <>
       <div className="center-input">
